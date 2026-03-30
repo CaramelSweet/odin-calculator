@@ -1,16 +1,21 @@
 body {
+    font-family: 'Courier New', Courier, monospace;
     background-color: #21252B;
-    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 button {
-    font-family: 'Courier New', Courier, monospace;
     font-size: 32px;
-    border: 1px solid rgb(22, 22, 22);
-    background-color: #3B4048;
+    border: 2px solid #3B4048;
+    background-color: #282C34;
     color: #EBEBEC;
     cursor: pointer;
     transition: 0.2s;
+    box-sizing: border-box;
 }
 
 button:hover {
@@ -18,38 +23,50 @@ button:hover {
     background-color: #626772;
 }
 
+button:active {
+    background-color: #282C34;
+}
+
 .calculator {
     background-color: gray;
-    padding: 50px;
+    border: 2px solid #3B4048;
     display: flex;
     flex-wrap: wrap;
-    width: 512px;
+    box-sizing: border-box;
+    user-select: none;
+    aspect-ratio: 4 / 6;
+    width: 400px; 
 }
 
 .screen {
     background-color: olive;
     font-size: 32px;
+    padding: 0 20px;
+    box-sizing: border-box;
     flex: 0 0 100%;
-    height: 128px;
+    height: calc(100% / 6);
     display: flex;
     align-items: center;
-    justify-content: right;
+    justify-content: flex-end;
+    border: 2px solid #3B4048;
+    aspect-ratio: 4 / 1;
 }
 
 .buttons-left {
     display: flex;
     flex: 3;
     flex-wrap: wrap;
+    height: calc(100% * 5 / 6);
 }
 
 .buttons-left button {
-    flex: 0 0 33.33%;
-    aspect-ratio: 1/1;
+    flex: 0 0 calc(100% / 3);
+    aspect-ratio: 1 / 1 ;
 }
 
 .buttons-left .buttons-wide {
-    flex: 0 0 66.66%;
-    aspect-ratio: 2/1;
+    flex: 0 0 calc(100% / 1.5);
+    aspect-ratio: 2 / 1;
 }
 
 .buttons-right {
@@ -59,11 +76,11 @@ button:hover {
 }
 
 .buttons-right button {
-    flex: 0 0 2%;
-    aspect-ratio: 1/1;
+    flex: 0 0 20%;
+    aspect-ratio: 1 / 1;
 }
 
 .buttons-right .buttons-tall {
-    flex: 0 0 4%;
-    aspect-ratio: 1/2;
+    flex: 0 0 40%;
+    aspect-ratio: 1 / 2;
 }
