@@ -28,7 +28,7 @@ button:active {
 }
 
 .calculator {
-    background-color: gray;
+    background-color: #3B4048;
     border: 2px solid #3B4048;
     display: flex;
     flex-wrap: wrap;
