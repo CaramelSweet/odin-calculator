@@ -1,9 +1,11 @@
 const button = document.querySelector(".calculator");
 const screen = document.querySelector(".screen");
 
+let a = "";
+let b = "";
+let operator;
+
 function add(a, b) {
-    const result = Number(a) + Number(b)
-    updateScreen(result);
     return a + b;
 }
 
@@ -19,39 +21,42 @@ function divide(a, b) {
     return a / b;
 }
 
-function operate(operator, a, b) {
+function operate(operator, num1, num2) {
+    num1 = Number(num1);
+    num2 = Number(num2);
+    let result;
     switch (operator) {
         case "+":
-            add(a,b);
+            result = add(num1, num2);
             break;
         case "-":
-            subtract(a,b);
+            result = subtract(num1, num2);
             break;
         case "*":
-            multiply(a,b);
+            result = multiply(num1, num2);
             break;
         case "/":
-            divide(a,b);
-            break;
-        default:
-            console.log("Unrecognized character!")
+            result = divide(num1, num2);
             break;
     }
-}
-
-function updateScreen(text) {
-    if (text == "") {
-        screen.textContent = ""
-    } else {
-        screen.textContent += text;
-    }
+    b = ""
+    a = result.toString();
+    updateDisplay();
 }
 
 function clear() {
     a = "";
     b = "";
     operator = undefined;
-    updateScreen("");
+    updateDisplay();
+}
+
+function updateDisplay() {
+    if (b === "") {
+        screen.textContent = a;
+    } else if (b !== ""){
+        screen.textContent = b;
+    } 
 }
 
 function updateNumber(num) {
@@ -60,16 +65,14 @@ function updateNumber(num) {
     } else {
         b += num;
     }
+    updateDisplay();
     console.log("A: ", a);
     console.log("B: ", b);
-    updateScreen(num);
+    console.log("Operator:", operator);
 }
 
 function updateOperator(symbol) {
-    if (operator == undefined) {
-        operator = symbol;
-    }
-    updateScreen("");
+    operator = symbol;
 }
 
 // Handle button press
@@ -94,10 +97,5 @@ button.addEventListener("click", (event) => {
     if ("equals" in type) {
         operate(operator,a,b);
     }
-
 })
-
-let a = "";
-let b = "";
-let operator = undefined;
 
