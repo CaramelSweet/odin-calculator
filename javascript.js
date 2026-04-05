@@ -5,40 +5,23 @@ let a = "";
 let b = "";
 let operator;
 
-function add(a, b) {
-    return a + b;
-}
-
-function subtract(a, b) {
-    return a - b;
-}
-
-function multiply(a, b) {
-    return a * b;
-}
-
-function divide(a, b) {
-    return a / b;
-}
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
+const divide = (a, b) => a / b;
 
 function operate(op, num1, num2) {
     num1 = Number(num1);
     num2 = Number(num2);
     let result;
+
     switch (op) {
-        case "+":
-            result = add(num1, num2);
-            break;
-        case "-":
-            result = subtract(num1, num2);
-            break;
-        case "*":
-            result = multiply(num1, num2);
-            break;
-        case "/":
-            result = divide(num1, num2);
-            break;
+        case "+": result = add(num1, num2); break;
+        case "-": result = subtract(num1, num2); break;
+        case "*": result = multiply(num1, num2); break;
+        case "/": result = divide(num1, num2); break;
     }
+
     b = ""
     a = result.toString();
     operator = undefined;
@@ -67,9 +50,6 @@ function updateNumber(num) {
         b += num;
     }
     updateDisplay();
-    console.log("A: ", a);
-    console.log("B: ", b);
-    console.log("Operator:", operator);
 }
 
 function updateOperator(symbol) {
@@ -98,25 +78,9 @@ button.addEventListener("click", (event) => {
     const type = target.dataset;
 
     if (!target.tagName === "button") return;
-
-    if ("number" in type) {
-        updateNumber(target.textContent);
-    }
-
-    if ("operator" in type) {
-        updateOperator(target.textContent);
-    }
-
-    if ("clear" in type) {
-        clear();
-    }
-
-    if ("equals" in type) {
-        operate(operator, a, b);
-    }
-
-    if ("decimal" in type) {
-        updateDecimal();
-    }
+    if ("number" in type) updateNumber(target.textContent);
+    if ("operator" in type) updateOperator(target.textContent);
+    if ("clear" in type) clear();
+    if ("equals" in type) operate(operator, a, b);
+    if ("decimal" in type) updateDecimal();
 })
-
