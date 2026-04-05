@@ -79,6 +79,19 @@ function updateOperator(symbol) {
     operator = symbol;
 }
 
+function updateDecimal () {
+    if (operator == undefined) {
+        if (a.includes(".")) {
+            return;
+        }
+    } else {
+        if (b.includes(".")) {
+            return;
+        }
+    }
+    updateNumber(".")
+}
+
 // Handle button press
 button.addEventListener("click", (event) => {
     const target = event.target;
@@ -100,6 +113,10 @@ button.addEventListener("click", (event) => {
 
     if ("equals" in type) {
         operate(operator, a, b);
+    }
+
+    if ("decimal" in type) {
+        updateDecimal();
     }
 })
 
