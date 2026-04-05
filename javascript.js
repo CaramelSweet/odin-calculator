@@ -21,11 +21,11 @@ function divide(a, b) {
     return a / b;
 }
 
-function operate(operator, num1, num2) {
+function operate(op, num1, num2) {
     num1 = Number(num1);
     num2 = Number(num2);
     let result;
-    switch (operator) {
+    switch (op) {
         case "+":
             result = add(num1, num2);
             break;
@@ -41,6 +41,7 @@ function operate(operator, num1, num2) {
     }
     b = ""
     a = result.toString();
+    operator = undefined;
     updateDisplay();
 }
 
@@ -72,6 +73,9 @@ function updateNumber(num) {
 }
 
 function updateOperator(symbol) {
+    if (a !== "" && b !== "" && operator !== undefined) {
+        operate(operator, a, b);
+    }
     operator = symbol;
 }
 
@@ -95,7 +99,7 @@ button.addEventListener("click", (event) => {
     }
 
     if ("equals" in type) {
-        operate(operator,a,b);
+        operate(operator, a, b);
     }
 })
 
