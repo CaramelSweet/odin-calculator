@@ -23,7 +23,7 @@ function operate(op, num1, num2) {
     }
 
     b = ""
-    a = result.toFixed(4);
+    a = +result.toFixed(4);
     operator = undefined;
     updateDisplay();
 }
