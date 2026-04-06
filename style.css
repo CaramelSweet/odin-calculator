@@ -41,15 +41,18 @@ button:active {
 .screen {
     background-color: olive;
     font-size: 32px;
-    padding: 0 20px;
+    padding-top: 30px;
+    padding-right: 10px;
     box-sizing: border-box;
     flex: 0 0 100%;
     height: calc(100% / 6);
-    display: flex;
+    display: block;
+    text-align: right;
     align-items: center;
     justify-content: flex-end;
     border: 2px solid #3B4048;
     aspect-ratio: 4 / 1;
+    overflow-x: auto;
 }
 
 .buttons-left {

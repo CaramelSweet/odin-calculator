@@ -23,7 +23,7 @@ function operate(op, num1, num2) {
     }
 
     b = ""
-    a = result.toString();
+    a = result.toFixed(4);
     operator = undefined;
     updateDisplay();
 }
@@ -53,6 +53,7 @@ function updateNumber(num) {
 }
 
 function updateOperator(symbol) {
+    if (a === "") return;
     if (a !== "" && b !== "" && operator !== undefined) {
         operate(operator, a, b);
     }
@@ -84,3 +85,6 @@ button.addEventListener("click", (event) => {
     if ("equals" in type) operate(operator, a, b);
     if ("decimal" in type) updateDecimal();
 })
+
+
+// handle appending to result by clearing
